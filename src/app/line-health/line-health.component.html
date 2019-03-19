@@ -1,0 +1,9 @@
+<section class="line-health">
+  <div>
+    <div #donut id="donut"></div>
+    line-health works!
+  </div>
+  <div *ngFor="let machine of allMachines">
+    <machine-history [machine]="machine"></machine-history>
+  </div>
+</section>
