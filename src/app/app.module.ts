@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { LineHealthComponent } from './line-health/line-health.component';
@@ -19,4 +20,6 @@ import { D3Service } from 'd3-ng2-service';
   providers: [D3Service],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  
+}

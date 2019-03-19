@@ -15,4 +15,9 @@ export class MachineHistoryComponent implements OnInit {
   ngOnInit() {
   }
 
+  getStatusClass(color) {
+    return "status-" + color;
+    
+  }
+
 }

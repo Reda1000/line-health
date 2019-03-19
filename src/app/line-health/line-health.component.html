@@ -1,9 +1,16 @@
 <section class="line-health">
-  <div>
-    <div #donut id="donut"></div>
-    line-health works!
-  </div>
-  <div *ngFor="let machine of allMachines">
-    <machine-history [machine]="machine"></machine-history>
-  </div>
+  <table style="width:100%">
+  <tr style="vertical-align: top">
+    <td style="text-align: center">
+      <div #donut id="donut"></div>
+      Todays availability
+    </td>
+    <td>
+      <div *ngFor="let machine of allMachines">
+        <machine-history [machine]="machine"></machine-history>
+      </div>
+    </td>
+  </tr>
+  </table>
+  
 </section>

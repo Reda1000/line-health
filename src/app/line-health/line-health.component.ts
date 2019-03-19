@@ -19,13 +19,13 @@ export class LineHealthComponent implements OnInit {
 
   private widthHeight=150;
   private radius = this.widthHeight / 2;
-  private donutWidth= 30;
+  private donutWidth= 20;
 
   private dataset = [
-    { label: 'red', count: 10 }, 
-    { label: 'green', count: 20 },
-    { label: '#ccc', count: 30 },
-    { label: 'yellow', count: 40 }
+    { label: "red", count: 10 }, 
+    { label: "green", count: 20 },
+    { label: "yellow", count: 30 },
+    { label: "#ccc", count: 40 }
   ];
 
   constructor(element: ElementRef, d3Service: D3Service) { 
@@ -36,10 +36,14 @@ export class LineHealthComponent implements OnInit {
     // some test data
     let m1 = new Machine();
     m1.name = "DMG Mori A200";
+    m1.status = "red";
+    m1.imageUrl = "m1.PNG";
     this.allMachines.push(m1);
 
     let m2 = new Machine();
     m2.name = "Anschütz DX1000";
+    m2.status = "green";
+    m2.imageUrl = "m2.PNG";
     this.allMachines.push(m2);
 
   }
@@ -55,9 +59,19 @@ export class LineHealthComponent implements OnInit {
 
     let pie = this.d3.pie().value((d) => { return d["count"]; }).sort(null);
 
+    svgChart.append("text")
+    .style("font-size","34px")
+    .attr("y", -5)
+    .attr("x", 0)
+    .attr("dy", ".47em")                        
+    .style("text-anchor", "middle")
+    .style("fill", "#004669")
+    .style("font-weight", "regular")
+    .text("50%");
+
     let path = svgChart.selectAll('path').data(pie(this.dataset))
-                  .enter().append('path').attr('d', arc)
-                  .attr('fill', (d,i) => color(d.data.label));
+                  .enter().append('path').attr('d', <any>arc)
+                  .attr('fill', (d,i) => { return d.data.label});
   
                   
   }
