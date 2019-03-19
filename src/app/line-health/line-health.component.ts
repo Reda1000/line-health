@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Machine } from '../model/machine';
-import { D3Service, D3, Selection } from 'd3-ng2-service';
+import { D3Service, D3, Selection, PieArcDatum } from 'd3-ng2-service';
 import { color, RGBColor } from 'd3-color';
 
 @Component({
@@ -52,28 +52,33 @@ export class LineHealthComponent implements OnInit {
 
     console.log(this.donut.nativeElement.offsetWidth);
 
+    let dataset = this.dataset;
+
+    // create SVG inside #donut element 
     let svgChart = this.d3.select('#donut').append('svg').attr('width', this.widthHeight).attr('height', this.widthHeight)
                     .append('g').attr('transform', 'translate(' + (this.widthHeight / 2) + ',' + (this.widthHeight / 2) + ")");
 
+    // define width of circle
     let arc = this.d3.arc().innerRadius(this.radius - this.donutWidth).outerRadius(this.radius);
 
-    let pie = this.d3.pie().value((d) => { return d["count"]; }).sort(null);
+    // define data values and order
+    let pie = this.d3.pie().value((d:any) => { return d; }).sort(null);
 
-    svgChart.append("text")
-    .style("font-size","34px")
-    .attr("y", -5)
-    .attr("x", 0)
-    .attr("dy", ".47em")                        
-    .style("text-anchor", "middle")
-    .style("fill", "#004669")
-    .style("font-weight", "regular")
-    .text("50%");
-
-    let path = svgChart.selectAll('path').data(pie(this.dataset))
+    // define colors
+    let path = svgChart.selectAll('path').data(pie(this.dataset.map(i => i.count)))
                   .enter().append('path').attr('d', <any>arc)
-                  .attr('fill', (d,i) => { return d.data.label});
+                  .attr('fill', (d) => dataset[d.index].label );
   
-                  
+    // add % figure in the middle of the gauge
+    svgChart.append("text")
+                  .style("font-size","34px")
+                  .attr("y", -5)
+                  .attr("x", 0)
+                  .attr("dy", ".47em")                        
+                  .style("text-anchor", "middle")
+                  .style("fill", "#004669")
+                  .style("font-weight", "regular")
+                  .text("50%");               
   }
 
 }
