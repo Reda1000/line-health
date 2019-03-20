@@ -8,6 +8,9 @@ import { MachineHistoryComponent } from './machine-history/machine-history.compo
 
 import { D3Service } from 'd3-ng2-service';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,7 +18,9 @@ import { D3Service } from 'd3-ng2-service';
     MachineHistoryComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FlexLayoutModule,
+    BrowserAnimationsModule
   ],
   providers: [D3Service],
   bootstrap: [AppComponent]

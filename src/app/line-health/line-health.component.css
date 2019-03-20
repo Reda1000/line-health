@@ -1,6 +1,7 @@
 
 .line-health {
     font-family: 'Roboto',Arial;
+    border:dotted 1px #ccc;
 }
 
 #donut {

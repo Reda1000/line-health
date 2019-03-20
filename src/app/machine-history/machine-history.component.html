@@ -1,17 +1,20 @@
-<table style="width:100%;margin-left:20px;">
-  <tr style="vertical-align: top">
-    <td style="width:40px">
-       <img src="/assets/{{machine.imageUrl}}" style="width:50px"/>
-    </td>
-    <td width="140px">
+<div class="container machine-history" fxLayout="row" fxLayout.xs="column">
+  
+  <div fxLayout="row" fxFlex="220px" fxFlex.xs="auto">
+    <div fxFlex="60px">
+        <img src="/assets/{{machine.imageUrl}}" style="width:50px"/>
+    </div>
+    <div fxFlex="160px">
         {{ machine.name }}
-    </td>
-    <td width="220px">
+    </div>
+  </div>
+  <div fxLayout="row" fxFlex="auto">
+    <div fxFlex="auto">
       <div style="border:solid 1px #ccc;height:20px;"></div>
-    </td>
-    <td width="30">
+    </div>
+    <div fxFlex="40px" style="text-align:center">
       <span class="mdi mdi-checkbox-blank-circle mdi-18px" [ngClass]="getStatusClass(machine.status)"></span>
-    </td>
-  </tr>
+    </div>
+  </div>
 
-</table>
+</div>

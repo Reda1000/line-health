@@ -1,16 +1,14 @@
-<section class="line-health">
-  <table style="width:100%">
-  <tr style="vertical-align: top">
-    <td style="text-align: center">
-      <div #donut id="donut"></div>
-      Todays availability
-    </td>
-    <td>
-      <div *ngFor="let machine of allMachines">
-        <machine-history [machine]="machine"></machine-history>
-      </div>
-    </td>
-  </tr>
-  </table>
+<section class="container line-health" fxLayout="row" fxLayout.xs="column">
+ 
+  <div style="text-align: center">
+    <div #donut id="donut"></div>
+    Todays availability
+  </div>
+  
+  <div fxFlex>
+    <div *ngFor="let machine of allMachines">
+      <machine-history [machine]="machine"></machine-history>
+    </div>
+  </div>
   
 </section>

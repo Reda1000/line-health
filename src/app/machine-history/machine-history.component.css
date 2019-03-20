@@ -1,4 +1,8 @@
 
+.machine-history {
+    margin:10px;
+    border:dotted 1px gold;
+}
 .status-red {
     color:red;
 }
