@@ -1,11 +1,12 @@
 <section class="container line-health" fxLayout="row" fxLayout.xs="column">
  
-  <div style="text-align: center">
-    <div #donut id="donut"></div>
+  <div style="text-align: center;margin-right:20px;">
     Todays availability
+    <div #donut id="donut"></div>
   </div>
   
   <div fxFlex>
+    <machine-history ></machine-history>
     <div *ngFor="let machine of allMachines">
       <machine-history [machine]="machine"></machine-history>
     </div>

@@ -2,8 +2,10 @@
 .line-health {
     font-family: 'Roboto',Arial;
     border:dotted 1px #ccc;
+    padding:10px;
+    padding-right:0;
 }
 
 #donut {
-
+   margin-top:10px;
 }

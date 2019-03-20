@@ -1,22 +1,79 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, ViewChild, HostListener, AfterViewInit } from '@angular/core';
 import { Machine } from '../model/machine';
+import { D3Service, D3 } from 'd3-ng2-service';
 
 @Component({
   selector: 'machine-history',
   templateUrl: './machine-history.component.html',
   styleUrls: ['./machine-history.component.css']
 })
-export class MachineHistoryComponent implements OnInit {
+export class MachineHistoryComponent implements OnInit, AfterViewInit {
 
+  @ViewChild('barchart') barchart;
+  
   @Input() machine: Machine;
 
-  constructor() { }
+  private d3: D3; // <-- Define the private member which will hold the d3 reference
+  private parentNativeElement: any;
+  
+  constructor(element: ElementRef, d3Service: D3Service) { 
 
-  ngOnInit() {
+    this.d3 = d3Service.getD3(); // <-- obtain the d3 object from the D3 Service
+    this.parentNativeElement = element.nativeElement;
   }
 
-  getStatusClass(color) {
-    return "status-" + color;
+  ngAfterViewInit() {
+
+    this.drawChart();
+  }
+
+  ngOnInit() {
+
+  }
+
+  drawChart() {
+
+    // FLEX elements --> scrollWidth(!)
+    let width = this.barchart.nativeElement.scrollWidth;
+    let height = this.barchart.nativeElement.scrollHeight;
+    console.log(width + "," + height);
+
+    this.d3.select(this.barchart.nativeElement).select('svg').remove();
+
+    // create SVG inside #donut element 
+    let svgChart = this.d3.select(this.barchart.nativeElement).append('svg').attr('width', "100%")
+                    .append('g');
+
+    let percWidth = width / 24;
+    
+    if (this.machine) {
+      // draw 1hour sections
+      for (var i=0;i<24;i++) {
+        let sectionColor = this.machine.availabilityArr[i];
+        if (sectionColor == '') {
+          // no computed value
+          sectionColor = "#ccc";
+        }
+        svgChart.append('rect').attrs({ x:i * percWidth, y:0, width: percWidth, height: 21, stroke:'white', fill: sectionColor});
+      }
+    } else {
+      // first row: draw scale
+      for (var i=0;i<25;i++) {
+         svgChart.append('line').attrs({ x1:i * percWidth, y1:10, x2: i * percWidth, y2: 21, stroke:'#ccc' });
+      }
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+     this.drawChart();
+  }
+  
+  getStatusClass(machine: Machine) {
+    if (!machine) {
+      return "status-white";
+    }
+    return "status-" + machine.status;
     
   }
 

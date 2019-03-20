@@ -2,18 +2,18 @@
   
   <div fxLayout="row" fxFlex="220px" fxFlex.xs="auto">
     <div fxFlex="60px">
-        <img src="/assets/{{machine.imageUrl}}" style="width:50px"/>
+        <img *ngIf="machine" src="/assets/{{machine.imageUrl}}" style="width:50px"/>
     </div>
     <div fxFlex="160px">
-        {{ machine.name }}
+        <span *ngIf="machine">{{ machine.name }}</span>
     </div>
   </div>
   <div fxLayout="row" fxFlex="auto">
     <div fxFlex="auto">
-      <div style="border:solid 1px #ccc;height:20px;"></div>
+      <div style="height:20px;" #barchart ></div>
     </div>
     <div fxFlex="40px" style="text-align:center">
-      <span class="mdi mdi-checkbox-blank-circle mdi-18px" [ngClass]="getStatusClass(machine.status)"></span>
+      <span class="mdi mdi-checkbox-blank-circle mdi-18px" [ngClass]="getStatusClass(machine)"></span>
     </div>
   </div>
 

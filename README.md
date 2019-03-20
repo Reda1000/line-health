@@ -1,6 +1,16 @@
 # LineHealth
 
+Renders a machine availability comparison in a responsive way.
+
+![Desktop](https://github.com/BulloRosso/line-health/blob/master/component-desktop.PNG?raw=true)
+
+![Mobile](https://github.com/BulloRosso/line-health/blob/master/component-mobile.PNG?raw=true)
+
+
+## Dependencies
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.
+
+Angular Material, d3.v4, Angular flex-layout
 
 ## Development server
 
