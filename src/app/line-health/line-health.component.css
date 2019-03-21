@@ -9,3 +9,11 @@
 #donut {
    margin-top:10px;
 }
+
+.legend {
+    display: inline-block;
+    width:10px;
+    height:10px;
+    margin-left:15px;
+    margin-right:6px;
+}

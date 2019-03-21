@@ -11,6 +11,7 @@ export class MachineHistoryComponent implements OnInit, AfterViewInit {
 
   @ViewChild('barchart') barchart;
   
+  @Input() isFirst: boolean;
   @Input() machine: Machine;
 
   private d3: D3; // <-- Define the private member which will hold the d3 reference
@@ -59,7 +60,7 @@ export class MachineHistoryComponent implements OnInit, AfterViewInit {
     } else {
       // first row: draw scale
       for (var i=0;i<25;i++) {
-         svgChart.append('line').attrs({ x1:i * percWidth, y1:10, x2: i * percWidth, y2: 21, stroke:'#ccc' });
+         svgChart.append('line').attrs({ x1:i * percWidth, y1:5, x2: i * percWidth, y2: 14, stroke:'#ccc' });
       }
     }
   }

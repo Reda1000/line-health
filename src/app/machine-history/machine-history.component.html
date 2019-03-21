@@ -1,19 +1,24 @@
-<div class="container machine-history" fxLayout="row" fxLayout.xs="column">
+<div class="container machine-history" fxLayout="row" [ngClass]="{'first-line': isFirst, 'regular-line': !isFirst}" fxLayout.xs="column">
   
   <div fxLayout="row" fxFlex="220px" fxFlex.xs="auto">
     <div fxFlex="60px">
         <img *ngIf="machine" src="/assets/{{machine.imageUrl}}" style="width:50px"/>
     </div>
     <div fxFlex="160px">
-        <span *ngIf="machine">{{ machine.name }}</span>
+        <span *ngIf="!machine" style="font-size:10px;self-">24 hour availabilty</span>
+        <span *ngIf="machine">
+            <span *ngIf="isFirst"><b>{{ machine.name }}</b></span>
+            <span *ngIf="!isFirst">{{ machine.name }}</span>
+        </span>
     </div>
   </div>
   <div fxLayout="row" fxFlex="auto">
     <div fxFlex="auto">
-      <div style="height:20px;" #barchart ></div>
+      <div style="height:20px" #barchart ></div>
     </div>
-    <div fxFlex="40px" style="text-align:center">
-      <span class="mdi mdi-checkbox-blank-circle mdi-18px" [ngClass]="getStatusClass(machine)"></span>
+    <div fxFlex="40px" style="text-align:center;vertical-align: bottom">
+      <span *ngIf="!machine" style="font-size:10px;">Status</span>
+      <span *ngIf="machine" class="mdi mdi-checkbox-blank-circle mdi-18px" [ngClass]="getStatusClass(machine)"></span>
     </div>
   </div>
 

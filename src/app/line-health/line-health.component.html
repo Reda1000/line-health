@@ -1,14 +1,24 @@
 <section class="container line-health" fxLayout="row" fxLayout.xs="column">
  
-  <div style="text-align: center;margin-right:20px;">
+  <div style="font-size:10px;text-align: center;margin-right:20px;margin-top:15px;">
     Todays availability
     <div #donut id="donut"></div>
   </div>
   
-  <div fxFlex>
+  <div fxFlex fxLayout="column">
     <machine-history ></machine-history>
-    <div *ngFor="let machine of allMachines">
-      <machine-history [machine]="machine"></machine-history>
+    <div *ngFor="let machine of allMachines;let first = first">
+      <machine-history [machine]="machine" [isFirst]="first"></machine-history>
+    </div>
+    <div style="font-size:10px;color:#ccc;padding-left:12px;">
+       <div class="legend" style="background-color:green"></div>
+       Producing   
+       <div class="legend" style="background-color:yellow"></div>
+       Idle   
+       <div class="legend" style="background-color:red"></div>
+       Unavailable    
+       <div class="legend" style="background-color:#ccc"></div>
+       No data
     </div>
   </div>
   

@@ -1,10 +1,22 @@
 
 .machine-history {
     margin:10px;
+    padding-left:6px;
     /* border:dotted 1px gold;*/
 }
+
+.first-line {
+    border-left:solid 4px blue;
+    color:blue;
+    border-bottom:dotted 1px #ccc;
+}
+
+.regular-line {
+    border-left:solid 4px transparent;
+}
+
 .status-red {
-    color:red;
+    color: red;
 }
 
 .status-green {
