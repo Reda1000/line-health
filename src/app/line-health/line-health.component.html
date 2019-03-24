@@ -1,25 +1,26 @@
 <section class="container line-health" fxLayout="row" fxLayout.xs="column">
  
   <div style="font-size:10px;text-align: center;margin-right:20px;margin-top:15px;">
-    Todays availability
+    {{ labelMap.get("lbl.availToday") }} 
     <div #donut id="donut"></div>
     <img *ngIf="allMachines[0].largeImageUrl" [src]="'/assets/' + allMachines[0].largeImageUrl" style="margin-top:20px;width:100%;"/>
   </div>
   
   <div fxFlex fxLayout="column">
-    <machine-history ></machine-history>
+    <machine-history [labelMap]="labelMap"></machine-history>
     <div *ngFor="let machine of allMachines;let first = first">
-      <machine-history [machine]="machine" [isFirst]="first" highlightColor="gold"></machine-history>
+      <machine-history [machine]="machine" [isFirst]="first" highlightColor="gold"
+                       [labelMap]="labelMap"></machine-history>
     </div>
     <div style="font-size:10px;color:#ccc;padding-left:12px;">
        <div class="legend" style="background-color:green"></div>
-       Producing   
+       {{ labelMap.get("lbl.producing") }}   
        <div class="legend" style="background-color:yellow"></div>
-       Idle   
+       {{ labelMap.get("lbl.idle") }}    
        <div class="legend" style="background-color:red"></div>
-       Unavailable    
+       {{ labelMap.get("lbl.unavailable") }}     
        <div class="legend" style="background-color:#ccc"></div>
-       No data
+       {{ labelMap.get("lbl.noData") }} 
     </div>
   </div>
   

@@ -6,6 +6,14 @@ Renders a machine availability comparison in a responsive way.
 
 ![Mobile](https://github.com/BulloRosso/line-health/blob/master/component-mobile.PNG?raw=true)
 
+## Parameters
+
+| Parameter Name    | Type     | Comment          |
+|-------------------|----------|------------------|
+ allMachines | Array<Machine>  | See type machine 
+ donutPercentValue | number | Percent value in donut
+ labelMap | Map<string,string> | Translations
+ todaysMachineAvailablity | Array | { label: 'green', count: 13 }
 
 ## Dependencies
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.

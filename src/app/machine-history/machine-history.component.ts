@@ -17,6 +17,9 @@ export class MachineHistoryComponent implements OnInit, AfterViewInit {
 
   @Input() highlightColor: string = "gold";
 
+  @Input()
+  public labelMap = new Map<string,string>();
+  
   @HostBinding("attr.style")
   public get valueAsStyle():any {
     return this.sanitizer.bypassSecurityTrustStyle(`--highlight-color: ${this.highlightColor}`)

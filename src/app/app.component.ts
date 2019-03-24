@@ -11,8 +11,19 @@ export class AppComponent {
 
   public allMachines: Array<Machine> = new Array<Machine>();
   public todaysMachineAvailability: Array<any>;
+  public labelMap : Map<string,string> = new Map<string,string>();
 
   constructor () {
+
+    // translations
+    this.labelMap.set("lbl.availToday", "Today's availability");
+    this.labelMap.set("lbl.24hours", "24 hour avaiablility");
+    this.labelMap.set("lbl.producing", "Producing");
+    this.labelMap.set("lbl.idle", "Idle");
+    this.labelMap.set("lbl.unavailable", "Unavailable");
+    this.labelMap.set("lbl.noData", "No data");
+    this.labelMap.set("lbl.status", "Status");
+
 
     // some test data
     let m1 = new Machine();

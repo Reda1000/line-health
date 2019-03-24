@@ -16,11 +16,18 @@ export class LineHealthComponent implements OnInit {
   private d3: D3; // <-- Define the private member which will hold the d3 reference
   private parentNativeElement: any;
 
-  @ViewChild('donut') donut;
+  @ViewChild('donut') 
+  donut;
+
+  @Input()
+  public labelMap = new Map<string,string>();
 
   private widthHeight=150;
   private radius = this.widthHeight / 2;
   private donutWidth= 20;
+
+  @Input() 
+  donutPercentValue: number = 30;
 
   @Input()
   public todaysMachineAvailability: Array<any>;
@@ -34,7 +41,8 @@ export class LineHealthComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log(this.donut.nativeElement.offsetWidth);
+    // test responsiveness
+    // console.log(this.donut.nativeElement.offsetWidth);
 
     // create SVG inside #donut element 
     let svgChart = this.d3.select('#donut').append('svg').attr('width', this.widthHeight).attr('height', this.widthHeight)
@@ -62,7 +70,7 @@ export class LineHealthComponent implements OnInit {
                   .style("text-anchor", "middle")
                   .style("fill", "#004669")
                   .style("font-weight", "regular")
-                  .text("50%");               
+                  .text(this.donutPercentValue + "%");               
   }
 
 }

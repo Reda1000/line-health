@@ -5,7 +5,7 @@
         <img *ngIf="machine" src="/assets/{{machine.imageUrl}}" style="width:50px"/>
     </div>
     <div fxFlex="160px">
-        <span *ngIf="!machine" style="font-size:10px;">24 hour availabilty</span>
+        <span *ngIf="!machine" style="font-size:10px;">{{ labelMap.get("lbl.24hours") }} </span>
         <span *ngIf="machine">
             <span *ngIf="isFirst"><b>{{ machine.name }}</b></span>
             <span *ngIf="!isFirst">{{ machine.name }}</span>
@@ -17,7 +17,7 @@
       <div style="height:20px" #barchart ></div>
     </div>
     <div fxFlex="40px" style="text-align:center;vertical-align: bottom">
-      <span *ngIf="!machine" style="font-size:10px;">Status</span>
+      <span *ngIf="!machine" style="font-size:10px;"> {{ labelMap.get("lbl.status") }} </span>
       <span *ngIf="machine" class="mdi mdi-checkbox-blank-circle mdi-18px" [ngClass]="getStatusClass(machine)"></span>
     </div>
   </div>
