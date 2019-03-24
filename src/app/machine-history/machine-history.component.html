@@ -5,7 +5,7 @@
         <img *ngIf="machine" src="/assets/{{machine.imageUrl}}" style="width:50px"/>
     </div>
     <div fxFlex="160px">
-        <span *ngIf="!machine" style="font-size:10px;self-">24 hour availabilty</span>
+        <span *ngIf="!machine" style="font-size:10px;">24 hour availabilty</span>
         <span *ngIf="machine">
             <span *ngIf="isFirst"><b>{{ machine.name }}</b></span>
             <span *ngIf="!isFirst">{{ machine.name }}</span>

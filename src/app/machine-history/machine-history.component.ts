@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, ElementRef, ViewChild, HostListener, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, ViewChild, HostListener, AfterViewInit, HostBinding } from '@angular/core';
 import { Machine } from '../model/machine';
 import { D3Service, D3 } from 'd3-ng2-service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'machine-history',
@@ -14,10 +15,17 @@ export class MachineHistoryComponent implements OnInit, AfterViewInit {
   @Input() isFirst: boolean;
   @Input() machine: Machine;
 
+  @Input() highlightColor: string = "gold";
+
+  @HostBinding("attr.style")
+  public get valueAsStyle():any {
+    return this.sanitizer.bypassSecurityTrustStyle(`--highlight-color: ${this.highlightColor}`)
+  } 
+
   private d3: D3; // <-- Define the private member which will hold the d3 reference
   private parentNativeElement: any;
   
-  constructor(element: ElementRef, d3Service: D3Service) { 
+  constructor(element: ElementRef, d3Service: D3Service, private sanitizer:DomSanitizer) { 
 
     this.d3 = d3Service.getD3(); // <-- obtain the d3 object from the D3 Service
     this.parentNativeElement = element.nativeElement;
