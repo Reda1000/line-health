@@ -14,6 +14,12 @@ Renders a machine availability comparison in a responsive way.
  donutPercentValue | number | Percent value in donut
  labelMap | Map<string,string> | Translations
  todaysMachineAvailablity | Array | { label: 'green', count: 13 }
+ highlightColor | string | used on the first machine line
+
+
+## Optional parameters
+
+A machine can have a largeImageUrl which is rendered below the pie chart.
 
 ## Dependencies
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.
