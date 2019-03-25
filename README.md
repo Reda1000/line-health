@@ -16,6 +16,30 @@ Renders a machine availability comparison in a responsive way.
  todaysMachineAvailablity | Array | { label: 'green', count: 13 }
  highlightColor | string | used on the first machine line
 
+The comparison needs machines with the following properties:
+
+| Parameter Name    | Type     | Comment          |
+|-------------------|----------|------------------|
+ name | string | Machine manufacturer and make
+ status | string | RGB hex value or color name
+ imageUrl | string | machine image for first column
+ largeImageUrl | string | machine image large (only for first machine)
+ availabilityArr | Array<string> | an array of RGB hex values or color names (exactly 24 values - one per hour)
+
+## Tranlsations
+
+You have to provide a string map containing the translated UI labels:
+
+```javascript
+    // translations
+    this.labelMap.set("lbl.availToday",   "Today's availability");
+    this.labelMap.set("lbl.24hours",      "24 hour avaiablility");
+    this.labelMap.set("lbl.producing",    "Producing");
+    this.labelMap.set("lbl.idle",         "Idle");
+    this.labelMap.set("lbl.unavailable",  "Unavailable");
+    this.labelMap.set("lbl.noData",       "No data");
+    this.labelMap.set("lbl.status",       "Status");
+```
 
 ## Optional parameters
 

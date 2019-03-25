@@ -3,7 +3,10 @@
   <div style="font-size:10px;text-align: center;margin-right:20px;margin-top:15px;">
     {{ labelMap.get("lbl.availToday") }} 
     <div #donut id="donut"></div>
-    <img *ngIf="allMachines[0].largeImageUrl" [src]="'/assets/' + allMachines[0].largeImageUrl" style="margin-top:20px;width:100%;"/>
+    <section *ngIf="allMachines[0].largeImageUrl">
+        <img *ngIf="allMachines[0].largeImageUrl.indexOf(':') == -1" [src]="'/assets/' + allMachines[0].largeImageUrl" style="margin-top:20px;width:100%;"/>
+        <img *ngIf="allMachines[0].largeImageUrl.indexOf(':') > -1" [src]="allMachines[0].largeImageUrl" style="margin-top:20px;width:100%;"/>
+    </section>
   </div>
   
   <div fxFlex fxLayout="column">

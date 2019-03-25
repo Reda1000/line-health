@@ -2,7 +2,10 @@
   
   <div fxLayout="row" fxFlex="220px" fxFlex.xs="auto">
     <div fxFlex="60px">
-        <img *ngIf="machine" src="/assets/{{machine.imageUrl}}" style="width:50px"/>
+        <section *ngIf="machine">
+          <img *ngIf="machine.imageUrl.indexOf(':') != -1" src="{{machine.imageUrl}}" style="width:50px"/>
+          <img *ngIf="machine.imageUrl.indexOf(':') == -1" src="/assets/{{machine.imageUrl}}" style="width:50px"/>
+        </section>
     </div>
     <div fxFlex="160px">
         <span *ngIf="!machine" style="font-size:10px;">{{ labelMap.get("lbl.24hours") }} </span>
