@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "iiot-line-health": [
+        "dist/iiot-line-health"
+      ],
+      "iiot-line-health/*": [
+        "dist/iiot-line-health/*"
+      ]
+    }
   }
 }
