@@ -1,7 +1,7 @@
 <section class="container line-health" fxLayout="row" fxLayout.xs="column">
  
   <div style="font-size:10px;text-align: center;margin-right:20px;margin-top:15px;">
-    {{ labelMap.get("lbl.availToday") }} 
+    {{ labelMap["lbl.availToday"] }} 
     <div #donut id="donut"></div>
     <section *ngIf="allMachines[0].largeImageUrl">
         <img *ngIf="allMachines[0].largeImageUrl.indexOf(':') == -1" [src]="'/assets/' + allMachines[0].largeImageUrl" style="margin-top:20px;width:100%;"/>
@@ -17,13 +17,13 @@
     </div>
     <div style="font-size:10px;color:#ccc;padding-left:12px;">
        <div class="legend" style="background-color:green"></div>
-       {{ labelMap.get("lbl.producing") }}   
+       {{ labelMap["lbl.producing"] }}   
        <div class="legend" style="background-color:yellow"></div>
-       {{ labelMap.get("lbl.idle") }}    
+       {{ labelMap["lbl.idle"] }}    
        <div class="legend" style="background-color:red"></div>
-       {{ labelMap.get("lbl.unavailable") }}     
+       {{ labelMap["lbl.unavailable"] }}     
        <div class="legend" style="background-color:#ccc"></div>
-       {{ labelMap.get("lbl.noData") }} 
+       {{ labelMap["lbl.noData"] }} 
     </div>
   </div>
   

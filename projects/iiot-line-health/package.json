@@ -1,8 +1,29 @@
 {
   "name": "iiot-line-health",
-  "version": "0.0.1",
+  "author": "Ralph Göllner",
+  "homepage": "https://github.com/BulloRosso/line-health",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BulloRosso/line-health.git"
+  },
+  "description": "A responsive machine dashboard which compares the machine with a line of machines.",
+  "version": "0.3.1",
   "peerDependencies": {
-    "@angular/common": "^7.2.0",
-    "@angular/core": "^7.2.0"
+    "@angular/animations": "~7.2.0",
+    "@angular/cdk": "^7.3.5",
+    "@angular/common": "~7.2.0",
+    "@angular/compiler": "~7.2.0",
+    "@angular/core": "~7.2.0",
+    "@angular/flex-layout": "^7.0.0-beta.24",
+    "@angular/forms": "~7.2.0",
+    "@angular/platform-browser": "~7.2.0",
+    "@angular/platform-browser-dynamic": "~7.2.0",
+    "@angular/router": "~7.2.0",
+    "@mdi/angular-material": "^3.5.95",
+    "core-js": "^2.5.4",
+    "d3-ng2-service": "^2.2.0",
+    "rxjs": "~6.3.3",
+    "tslib": "^1.9.0",
+    "zone.js": "~0.8.26"
   }
 }

@@ -24,6 +24,12 @@
       ],
       "iiot-line-health/*": [
         "dist/iiot-line-health/*"
+      ],
+      "ng-factory-health": [
+        "dist/ng-factory-health"
+      ],
+      "ng-factory-health/*": [
+        "dist/ng-factory-health/*"
       ]
     }
   }

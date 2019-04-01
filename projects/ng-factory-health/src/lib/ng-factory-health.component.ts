@@ -1,13 +1,13 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
-import { Machine } from 'src/app/model/machine';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Machine } from './model/machine';
 import { D3, D3Service } from 'd3-ng2-service';
 
 @Component({
-  selector: 'lib-iiot-line-health',
-  templateUrl: './iiot-line-health.component.html',
-  styleUrls: ['./iiot-line-health.component.scss']
+  selector: 'lib-ng-factory-health',
+  templateUrl: './ng-factory-health.component.html',
+  styleUrls: ['./ng-factory-health.component.scss']
 })
-export class IiotLineHealthComponent implements OnInit {
+export class NgFactoryHealthComponent implements OnInit {
   @Input()
   public allMachines = new Array<Machine>();
 

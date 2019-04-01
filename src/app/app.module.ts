@@ -3,19 +3,17 @@ import { NgModule } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { LineHealthComponent } from './line-health/line-health.component';
-import { MachineHistoryComponent } from './machine-history/machine-history.component';
 
 import { D3Service } from 'd3-ng2-service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NgFactoryHealthModule } from 'projects/ng-factory-health/src/public-api';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LineHealthComponent,
-    MachineHistoryComponent
+    NgFactoryHealthModule
   ],
   imports: [
     BrowserModule,
@@ -25,6 +23,4 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   providers: [D3Service],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
-  
-}
+export class AppModule { }

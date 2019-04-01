@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IiotLineHealthComponent } from './iiot-line-health.component';
+import { MachineHistoryComponent } from './machine-history.component';
 
-describe('IiotLineHealthComponent', () => {
-  let component: IiotLineHealthComponent;
-  let fixture: ComponentFixture<IiotLineHealthComponent>;
+describe('MachineHistoryComponent', () => {
+  let component: MachineHistoryComponent;
+  let fixture: ComponentFixture<MachineHistoryComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IiotLineHealthComponent ]
+      declarations: [ MachineHistoryComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IiotLineHealthComponent);
+    fixture = TestBed.createComponent(MachineHistoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

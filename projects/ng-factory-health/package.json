@@ -1,0 +1,15 @@
+{
+  "name": "ng-factory-health",
+  "version": "0.0.3",
+  "author": "Ralph Göllner",
+  "homepage": "https://github.com/BulloRosso/line-health",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BulloRosso/line-health.git"
+  },
+  "description": "A responsive machine dashboard which compares the machine with a line of machines.",
+  "peerDependencies": {
+    "@angular/common": "^7.2.0",
+    "@angular/core": "^7.2.0"
+  }
+}
