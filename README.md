@@ -6,44 +6,46 @@ Renders a machine availability comparison in a responsive way.
 
 ![Mobile](https://github.com/BulloRosso/line-health/blob/master/component-mobile.PNG?raw=true)
 
-## Parameters
+## Usage
 
-| Parameter Name    | Type     | Comment          |
-|-------------------|----------|------------------|
- allMachines | Array<Machine>  | See type machine 
- donutPercentValue | number | Percent value in donut
- labelMap | Map<string,string> | Translations
- todaysMachineAvailablity | Array | { label: 'green', count: 13 }
- highlightColor | string | used on the first machine line
+Line health module serves following HTML-Element
+``` <lib-ng-factory-health [machines]="allMachines" [labelMap]="labelMap" [selectMachine]="'U7010'" (selectedMachine)="info($event)"></lib-ng-factory-health>
+```
+machines: Holds an array of Machine-Type defined as
+```export interface Machine {
+  id: string;
+  name: string;
+  imageUrl: string;
+  largeImageUrl: string;
+  state: {
+    live: 'ready' | 'run' | 'stop' | 'unavailable';
+    history: ('ready' | 'run' | 'stop' | 'unavailable')[];
+    summary: { code: 'ready' | 'run' | 'stop' | 'unavailable'; value: number }[];
+  };
+}
+```
+Note: You can update this field structure whenever you want or for instance when 'selectedMachine' Output is fired and more specific data is required.
 
-The comparison needs machines with the following properties:
+labelMap: Object with key-value pairs holding translations.
 
-| Parameter Name    | Type     | Comment          |
-|-------------------|----------|------------------|
- name | string | Machine manufacturer and make
- status | string | RGB hex value or color name
- imageUrl | string | machine image for first column
- largeImageUrl | string | machine image large (only for first machine)
- availabilityArr | Array<string> | an array of RGB hex values or color names (exactly 24 values - one per hour)
+selectMachine: String containing a valid id of any machine in machines given. Can be changed on demand.
 
-## Tranlsations
+selectedMachine: Callback triggered if different machine was selected inside Component.
 
-You have to provide a string map containing the translated UI labels:
+## Translations
+
+You have to provide a string object named labelMap containing these translated UI labels:
 
 ```javascript
     // translations
-    this.labelMap.set("lbl.availToday",   "Today's availability");
-    this.labelMap.set("lbl.24hours",      "24 hour avaiablility");
-    this.labelMap.set("lbl.producing",    "Producing");
-    this.labelMap.set("lbl.idle",         "Idle");
-    this.labelMap.set("lbl.unavailable",  "Unavailable");
-    this.labelMap.set("lbl.noData",       "No data");
-    this.labelMap.set("lbl.status",       "Status");
+    this.labelMap["lbl.availToday"] = "Today's availability";
+    this.labelMap["lbl.24hours"] = "24 hour avaiablility";
+    this.labelMap["lbl.producing"] = "Producing";
+    this.labelMap["lbl.idle"] = "Idle";
+    this.labelMap["lbl.unavailable"] = "Unavailable";
+    this.labelMap["lbl.noData"] = "No data";
+    this.labelMap["lbl.status"] = "Status";
 ```
-
-## Optional parameters
-
-A machine can have a largeImageUrl which is rendered below the pie chart.
 
 ## Dependencies
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.
