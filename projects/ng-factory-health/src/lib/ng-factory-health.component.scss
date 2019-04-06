@@ -1,19 +1,52 @@
+.health-comparison {
+}
 
-.line-health {
-    font-family: 'Roboto',Arial;
-    border:dotted 1px #ccc;
-    padding:10px;
-    padding-right:0;
+.title {
+    font-size: 80%;
+}
+
+.machine {
+    margin: 10px;
+    min-width: 300px;
 }
 
 #donut {
-   margin-top:10px;
+  margin-top: 10px;
 }
 
 .legend {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  .legend__item {
     display: inline-block;
-    width:10px;
-    height:10px;
-    margin-left:15px;
-    margin-right:6px;
+    text-indent: 1rem;
+    font-size: 80%;
+    line-height: 80%;
+
+    &::before {
+      content: "■";
+      font-family: "Arial Black";
+      font-weight: bold;
+      vertical-align: text-top;
+    }
+
+    &.item--producing::before {
+      color: green;
+    }
+
+    &.item--idle::before {
+      color: yellow;
+    }
+
+    &.item--unavailable::before {
+      color: red;
+    }
+
+    &.item--noData::before {
+      color: #ccc;
+    }
+
+  }
 }

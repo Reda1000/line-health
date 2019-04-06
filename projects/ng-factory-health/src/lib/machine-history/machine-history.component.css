@@ -15,18 +15,26 @@
     border-left:solid 4px transparent;
 }
 
+.dot {
+    border-radius: 50%;
+    width: 20px;
+    display: block;
+    height: 20px;
+    margin: 0 auto;
+}
+
 .status-red {
-    color: red;
+    background-color: red;
 }
 
 .status-green {
-    color:green;
+    background-color:green;
 }
 
 .status-yellow {
-    color:yellow;
+    background-color:yellow;
 }
 
 .status-white {
-    color: transparent;
+    background-color: transparent;
 }

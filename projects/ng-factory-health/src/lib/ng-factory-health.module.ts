@@ -6,12 +6,6 @@ import { CommonModule } from '@angular/common';
 import { MachineHistoryComponent } from './machine-history/machine-history.component';
 
 @NgModule({
-  declarations: [NgFactoryHealthComponent],
-  imports: [
-  ],
-  exports: [NgFactoryHealthComponent]
-})
-@NgModule({
   declarations: [
     NgFactoryHealthComponent,
     MachineHistoryComponent

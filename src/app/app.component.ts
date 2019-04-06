@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Machine } from './model/machine';
+import { Machine } from 'projects/ng-factory-health/src/public-api';
 
 @Component({
   selector: 'app-root',
@@ -9,75 +9,188 @@ import { Machine } from './model/machine';
 export class AppComponent {
   title = 'line-health';
 
-  public allMachines: Array<Machine> = new Array<Machine>();
-  public todaysMachineAvailability: Array<any>;
-  public labelMap : Map<string,string> = new Map<string,string>();
+  public allMachines: Machine[] = [];
+  public todaysMachineAvailability: any[] = [];
+  public labelMap: { [key: string]: string } = {};
 
-  constructor () {
-
+  constructor() {
     // translations
-    this.labelMap.set("lbl.availToday",   "Today's availability");
-    this.labelMap.set("lbl.24hours",      "24 hour avaiablility");
-    this.labelMap.set("lbl.producing",    "Producing");
-    this.labelMap.set("lbl.idle",         "Idle");
-    this.labelMap.set("lbl.unavailable",  "Unavailable");
-    this.labelMap.set("lbl.noData",       "No data");
-    this.labelMap.set("lbl.status",       "Status");
-
+    this.labelMap['lbl.availToday'] = "Today's availability";
+    this.labelMap['lbl.24hours'] = '24 hour avaiablility';
+    this.labelMap['lbl.producing'] = 'Producing';
+    this.labelMap['lbl.idle'] = 'Idle';
+    this.labelMap['lbl.unavailable'] = 'Unavailable';
+    this.labelMap['lbl.noData'] = 'No data';
+    this.labelMap['lbl.status'] = 'Status';
 
     // some test data
-    let m1 = new Machine();
-    m1.name = "DMX Gorki A200";
-    m1.status = "red";
-    m1.imageUrl = "m1.PNG";
-    m1.largeImageUrl = "machine-image.png";
-    m1.availabilityArr = [
-      'red', 'green', 'green', 'yellow', 'yellow', 'green', 'green', 'green', '', '', 'yellow',
-      'red', 'green', 'green', 'yellow', 'yellow', 'green', 'green', 'green', '', '', 'yellow',
-      'green', 'green'
-    ];
-    this.allMachines.push(m1);
+    this.allMachines.push({
+      id: 'U7010',
+      name: 'DMX Gorki A200',
+      imageUrl: 'assets/m1.PNG',
+      largeImageUrl: 'assets/machine-image.png',
+      state: {
+        live: 'stop',
+        history: [
+          'stop',
+          'run',
+          'run',
+          'ready',
+          'ready',
+          'run',
+          'run',
+          'run',
+          'unavailable',
+          'unavailable',
+          'ready',
+          'stop',
+          'run',
+          'run',
+          'ready',
+          'ready',
+          'run',
+          'run',
+          'run',
+          'unavailable',
+          'unavailable',
+          'ready',
+          'run',
+          'run'
+        ],
+        summary: [
+          { code: 'unavailable', value: 100 }
+        ]
+      }
+    });
 
-    let m2 = new Machine();
-    m2.name = "Gigglmeier DX1000";
-    m2.status = "green";
-    m2.imageUrl = "m2.PNG";
-    m2.availabilityArr = [
-      'red', 'red', 'red', 'yellow', 'yellow', 'green', 'green', 'green', '', '', 'yellow',
-      'red', 'green', 'green', 'yellow', 'yellow', 'green', 'green', 'green', '', '', 'yellow',
-      'green', 'red'
-    ]
-    this.allMachines.push(m2);
+    this.allMachines.push({
+      id: 'U7011',
+      name: 'Gigglmeier DX1000',
+      imageUrl: 'assets/m2.PNG',
+      largeImageUrl: 'assets/m2.PNG',
+      state: {
+        live: 'run',
+        history: [
+          'stop',
+          'stop',
+          'stop',
+          'ready',
+          'ready',
+          'run',
+          'run',
+          'run',
+          'unavailable',
+          'unavailable',
+          'ready',
+          'stop',
+          'run',
+          'run',
+          'ready',
+          'ready',
+          'run',
+          'run',
+          'run',
+          'unavailable',
+          'unavailable',
+          'ready',
+          'run',
+          'stop'
+        ],
+        summary: [
+          { code: 'stop', value: 10 },
+          { code: 'run', value: 20 },
+          { code: 'ready', value: 30 },
+          { code: 'unavailable', value: 40 }
+        ]
+      }
+    });
 
-    let m3 = new Machine();
-    m3.name = "Mitsibushi GMX";
-    m3.status = "yellow";
-    m3.imageUrl = "m3.PNG";
-    m3.availabilityArr = [
-      'red', 'red', 'red', 'yellow', 'yellow', 'green', 'green', 'green', '', '', 'yellow',
-      'red', 'green', 'green', 'yellow', 'yellow', 'green', 'green', 'green', '', '', 'yellow',
-      'green', 'green'
-    ]
-    this.allMachines.push(m3);
+    this.allMachines.push({
+      id: 'U7012',
+      name: 'Mitsibushi GMX',
+      imageUrl: 'assets/m3.PNG',
+      largeImageUrl: 'assets/m3.PNG',
+      state: {
+        live: 'ready',
+        history: [
+          'stop',
+          'stop',
+          'stop',
+          'ready',
+          'ready',
+          'run',
+          'run',
+          'run',
+          'unavailable',
+          'unavailable',
+          'ready',
+          'stop',
+          'run',
+          'run',
+          'ready',
+          'ready',
+          'run',
+          'run',
+          'run',
+          'unavailable',
+          'unavailable',
+          'ready',
+          'run',
+          'run'
+        ],
+        summary: [
+          { code: 'stop', value: 20 },
+          { code: 'run', value: 10 },
+          { code: 'ready', value: 30 },
+          { code: 'unavailable', value: 40 }
+        ]
+      }
+    });
 
-    let m4 = new Machine();
-    m4.name = "Casparex M4i";
-    m4.status = "green";
-    m4.imageUrl = "m4.PNG";
-    m4.availabilityArr = [
-      'red', 'red', 'red', 'yellow', 'yellow', 'green', 'green', 'green', '', '', 'yellow',
-      'red', 'green', 'green', 'yellow', 'yellow', 'green', 'green', 'green', '', '', 'green',
-      '', ''
-    ]
-    this.allMachines.push(m4);
-
-    this.todaysMachineAvailability = [
-      { label: "red", count: 10 }, 
-      { label: "green", count: 20 },
-      { label: "yellow", count: 30 },
-      { label: "#ccc", count: 40 }
-    ];
+    this.allMachines.push({
+      id: 'U7013',
+      name: 'Casparex M4i',
+      imageUrl: 'assets/m4.PNG',
+      largeImageUrl: 'assets/m4.PNG',
+      state: {
+        live: 'run',
+        history: [
+          'stop',
+          'stop',
+          'stop',
+          'ready',
+          'ready',
+          'run',
+          'run',
+          'run',
+          'unavailable',
+          'unavailable',
+          'ready',
+          'stop',
+          'run',
+          'run',
+          'ready',
+          'ready',
+          'run',
+          'run',
+          'run',
+          'unavailable',
+          'unavailable',
+          'run',
+          'unavailable',
+          'unavailable'
+        ],
+        summary: [
+          { code: 'stop', value: 10 },
+          { code: 'run', value: 20 },
+          { code: 'ready', value: 30 },
+          { code: 'unavailable', value: 40 }
+        ]
+      }
+    });
   }
 
-  
+  info(machine: Machine) {
+    console.log(machine);
+  }
 }

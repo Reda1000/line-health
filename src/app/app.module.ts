@@ -13,12 +13,12 @@ import { NgFactoryHealthModule } from 'projects/ng-factory-health/src/public-api
 @NgModule({
   declarations: [
     AppComponent,
-    NgFactoryHealthModule
   ],
   imports: [
     BrowserModule,
     FlexLayoutModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgFactoryHealthModule
   ],
   providers: [D3Service],
   bootstrap: [AppComponent]

@@ -7,8 +7,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "pack-isomap": "npm run build iiot-line-health && cd dist/iiot-line-health && npm pack",
-    "publish-isomap": "npm publish iiot-line-health-0.3.1.tgz"
+    "pack-isomap": "npm run build ng-factory-health && cd dist/ng-factory-health && npm pack",
+    "publish-isomap": "npm publish ng-factory-health-0.1.0.tgz"
   },
   "private": false,
   "dependencies": {

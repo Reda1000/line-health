@@ -131,41 +131,6 @@
         }
       }
     },
-    "iiot-line-health": {
-      "root": "projects/iiot-line-health",
-      "sourceRoot": "projects/iiot-line-health/src",
-      "projectType": "library",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "projects/iiot-line-health/tsconfig.lib.json",
-            "project": "projects/iiot-line-health/ng-package.json"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/iiot-line-health/src/test.ts",
-            "tsConfig": "projects/iiot-line-health/tsconfig.spec.json",
-            "karmaConfig": "projects/iiot-line-health/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/iiot-line-health/tsconfig.lib.json",
-              "projects/iiot-line-health/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
     "ng-factory-health": {
       "root": "projects/ng-factory-health",
       "sourceRoot": "projects/ng-factory-health/src",

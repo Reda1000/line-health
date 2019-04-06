@@ -8,7 +8,7 @@ import {
   AfterViewInit,
   HostBinding
 } from '@angular/core';
-import { Machine } from '../model/machine';
+import { Machine, ColorTable } from '../model/machine';
 import { D3Service, D3 } from 'd3-ng2-service';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -18,12 +18,20 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./machine-history.component.css']
 })
 export class MachineHistoryComponent implements OnInit, AfterViewInit {
+  highlightColor = 'gold';
+  selected = false;
+
   @ViewChild('barchart') barchart;
-  @Input() isFirst: boolean;
+
+  @Input('selected') set select(select: boolean) {
+    this.selected = select;
+  }
+
   @Input() machine: Machine;
-  @Input() highlightColor = 'gold';
+
   @Input()
   public labelMap: { [key: string]: string } = {};
+
   @HostBinding('attr.style')
   public get valueAsStyle(): any {
     return this.sanitizer.bypassSecurityTrustStyle(
@@ -41,7 +49,7 @@ export class MachineHistoryComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.drawChart();
+    setTimeout(_ => this.drawChart());
   }
 
   ngOnInit() {}
@@ -50,7 +58,6 @@ export class MachineHistoryComponent implements OnInit, AfterViewInit {
     // FLEX elements --> scrollWidth(!)
     const width = this.barchart.nativeElement.scrollWidth;
     const height = this.barchart.nativeElement.scrollHeight;
-    console.log(width + ',' + height);
 
     this.d3
       .select(this.barchart.nativeElement)
@@ -69,11 +76,6 @@ export class MachineHistoryComponent implements OnInit, AfterViewInit {
     if (this.machine) {
       // draw 1hour sections
       for (let i = 0; i < 24; i++) {
-        let sectionColor = this.machine.availabilityArr[i];
-        if (sectionColor === '') {
-          // no computed value
-          sectionColor = '#ccc';
-        }
         svgChart
           .append('rect')
           .attrs({
@@ -82,7 +84,7 @@ export class MachineHistoryComponent implements OnInit, AfterViewInit {
             width: percWidth,
             height: 21,
             stroke: 'white',
-            fill: sectionColor
+            fill: ColorTable.machineCodes[this.machine.state.history[i]]
           });
       }
     } else {
@@ -110,6 +112,6 @@ export class MachineHistoryComponent implements OnInit, AfterViewInit {
     if (!machine) {
       return 'status-white';
     }
-    return 'status-' + machine.status;
+    return 'status-' + ColorTable.machineCodes[machine.state.live];
   }
 }
