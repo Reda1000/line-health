@@ -12,7 +12,8 @@ Line health module serves following HTML-Element
 ``` <lib-ng-factory-health [machines]="allMachines" [labelMap]="labelMap" [selectMachine]="'U7010'" (selectedMachine)="info($event)"></lib-ng-factory-health>
 ```
 machines: Holds an array of Machine-Type defined as
-```export interface Machine {
+```
+export interface Machine {
   id: string;
   name: string;
   imageUrl: string;
