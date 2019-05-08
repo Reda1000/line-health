@@ -98,18 +98,6 @@ export class NgFactoryHealthComponent implements OnInit {
       })
       .sort(null);
 
-    // define colors
-    const path = svgChart
-      .selectAll('path')
-      .data(pie(data.map(i => i.value)))
-      .enter()
-      .append('path')
-      .attr('d', arc as any)
-      .attr(
-        'fill',
-        d => ColorTable.machineCodes[data[d.index].code]
-      );
-
     const percentage =
       (data.find(_ => _.code === 'run') || { value: 0 }).value /
       data.reduce((a, b) => a + (b.value || 0), 0);
@@ -123,6 +111,6 @@ export class NgFactoryHealthComponent implements OnInit {
       .style('text-anchor', 'middle')
       .style('fill', '#004669')
       .style('font-weight', 'regular')
-      .text(percentage * 100 + '%');
+      .text(Math.floor(percentage) * 100 + '%');
   }
 }

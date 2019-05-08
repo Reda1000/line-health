@@ -8,7 +8,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "pack-isomap": "npm run build ng-factory-health && cd dist/ng-factory-health && npm pack",
-    "publish-isomap": "npm publish ng-factory-health-0.1.0.tgz"
+    "publish-isomap": "npm publish ng-factory-health-0.1.2.tgz"
   },
   "private": false,
   "dependencies": {
