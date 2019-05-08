@@ -18,6 +18,7 @@ export class NgFactoryHealthComponent implements OnInit {
   private static widthHeight = 150;
   private static radius = NgFactoryHealthComponent.widthHeight / 2;
   private static donutWidth = 20;
+  private static colorMapping = {ready: 'yellow', run: 'green', stop: 'red', unavailable: 'grey'};
 
   private d3: D3 = this.d3Service.getD3();
   public machines: Machine[];
@@ -97,6 +98,11 @@ export class NgFactoryHealthComponent implements OnInit {
         return d;
       })
       .sort(null);
+
+    // define colors
+    let path = svgChart.selectAll('path').data(pie(data.map(i => i.value)))
+      .enter().append('path').attr('d', <any>arc)
+      .attr('fill', (d) => (NgFactoryHealthComponent.colorMapping[data[d.index].code]) );
 
     const percentage =
       (data.find(_ => _.code === 'run') || { value: 0 }).value /
