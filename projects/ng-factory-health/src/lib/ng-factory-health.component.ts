@@ -117,6 +117,6 @@ export class NgFactoryHealthComponent implements OnInit {
       .style('text-anchor', 'middle')
       .style('fill', '#004669')
       .style('font-weight', 'regular')
-      .text(Math.floor(percentage * 100) + '%');
+      .text(Math.round(percentage * 100) + '%');
   }
 }
